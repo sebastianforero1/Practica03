@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-
+// Se ejecuta el código con los siguientes comandos en terminal: gcc -o prueba prueba.c -lm y ./prueba
 #define STACK_SIZE 100
 
 double stack[STACK_SIZE];
@@ -29,7 +29,7 @@ int main() {
     double pi = 3.1416;
 
     while (1) {
-        printf("Enter operator or value (q to quit): ");
+        printf("Coloque un valor y/o operador (q para salir): ");
         scanf(" %c", &op);
 
         if (op == 'q') {
@@ -38,7 +38,7 @@ int main() {
                    op == 's' || op == 'c' || op == 't' || op == 'r') {
             if (op == 's' || op == 'c' || op == 't' || op == 'r') {
                 if (top < 0) {
-                    printf("Error: Not enough operands\n");
+                    printf("Error: No hay suficientes operandos\n");
                     continue;
                 }
                 value = pop();
@@ -80,13 +80,13 @@ int main() {
         } else {
             ungetc(op, stdin);
             if (scanf("%lf", &value) != 1) {
-                printf("Error: Invalid input\n");
+                printf("Error: Entrada inválida\n");
                 exit(EXIT_FAILURE);
             }
             push(value);
         }
     }
 
-    printf("Final result: %.2f\n", pop());
+    printf("Resultado final: %.2f\n", pop());
     return 0;
 }
